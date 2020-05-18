@@ -14,6 +14,12 @@ configurations {
 	}
 }
 
+task print() {
+	doLast{
+		println "github push complete"
+	}
+}
+
 repositories {
 	mavenCentral()
 }
