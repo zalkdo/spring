@@ -11,7 +11,7 @@ node {
            stage('Gradle'){
               sh "pwd"
               dir('spring-boot'){
-                sh "./gradlew clean print"
+                sh "./gradlew clean build print"
               }
            }
            /*
