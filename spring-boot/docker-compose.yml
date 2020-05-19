@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: ${DOCKER_USER_ID}/spring-boot
+  production:
+    volumns:
+      - /tmp
+    ports:
+      - 80:8080
+    command: ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/to-do-springboot.jar"]

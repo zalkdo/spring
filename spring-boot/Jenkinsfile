@@ -22,8 +22,13 @@ node {
            */
            stage('Build') {
 				/*sh(script: 'docker build --force-rm=true -t ${DOCKER_USER_ID}/spring-boot:latest . ')*/
-			   customImage = docker.build("${DOCKER_USER_ID}/spring-boot:${BUILD_NUMBER}","spring-boot")    
+			   //customImage = docker.build("${DOCKER_USER_ID}/spring-boot:${BUILD_NUMBER}","spring-boot")
+			   sh(script: 'docker-compose build app')
            }
+           stage('Tag'){
+               sh(script: 'docker tag ${DOCKER_USER_ID}/spring-boot ${DOCKER_USER_ID}/spring-boot:${BUILD_NUMBER}')               
+           }
+
            stage('Push'){
            	   docker.withRegistry("https://registry.hub.docker.com", "dockerhub"){
 				   customImage.push()
@@ -32,14 +37,15 @@ node {
            }
 
            stage('Deploy') {
-        		try{
-        		    
+           		sh(script: 'docker-compose up -d production')
+        		/*try{
         		    sh(script: 'docker stop spring-boot')
         		    sh(script: 'docker rm spring-boot')
         		} catch(e) {
         		      echo "No ${DOCKER_USER_ID}/spring-boot container exists"
         		}
 				sh(script : '''docker run -d -p 80:8080 --name spring-boot ${DOCKER_USER_ID}/spring-boot:${BUILD_NUMBER}''')
+				*/
            }
         }
 
