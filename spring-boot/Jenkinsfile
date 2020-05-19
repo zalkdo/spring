@@ -34,12 +34,12 @@ node {
            stage('Deploy') {
         		try{
         		    
-        		    sh(script: 'docker stop ${DOCKER_USER_ID}/spring-boot')
-        		    sh(script: 'docker rm ${DOCKER_USER_ID}/spring-boot')
+        		    sh(script: 'docker stop spring-boot')
+        		    sh(script: 'docker rm spring-boot')
         		} catch(e) {
         		      echo "No ${DOCKER_USER_ID}/spring-boot container exists"
         		}
-				sh(script : '''docker run -d -p 80:8080 --name ${DOCKER_USER_ID}/spring-boot ${DOCKER_USER_ID}/spring-boot:${BUILD_NUMBER}''')
+				sh(script : '''docker run -d -p 80:8080 --name spring-boot ${DOCKER_USER_ID}/spring-boot:${BUILD_NUMBER}''')
            }
         }
 
