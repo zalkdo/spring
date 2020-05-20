@@ -5,7 +5,7 @@ services:
     build: .
     image: ${DOCKER_USER_ID}/spring-boot:${BUILD_NUMBER}
   production:
-    image: ${DOCKER_USER_ID}/spring-boot:latest
+    image: ${DOCKER_USER_ID}/spring-boot:${BUILD_NUMBER}
     volumes:
       - /tmp
     restart: always
