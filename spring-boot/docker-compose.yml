@@ -5,6 +5,7 @@ services:
     build: .
     image: ${DOCKER_USER_ID}/spring-boot
   production:
+    image: ${DOCKER_USER_ID}/spring-boot
     volumes:
       - /tmp
     ports:
