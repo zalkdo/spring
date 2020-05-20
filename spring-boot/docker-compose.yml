@@ -4,6 +4,9 @@ services:
   app:
     build: .
     image: ${DOCKER_USER_ID}/spring-boot:${BUILD_NUMBER}
+  latest:
+    build: .
+    image: ${DOCKER_USER_ID}/spring-boot:latest
   production:
     image: ${DOCKER_USER_ID}/spring-boot:latest
     volumes:
@@ -12,4 +15,4 @@ services:
     ports:
       - 80:8080
     container_name: spring-boot
-    command: ["bash", "-c", "java -Djava.security.egd=file:/dev/./urandom -jar /to-do-springboot.jar"]
+    command: ["java -Djava.security.egd=file:/dev/./urandom -jar /to-do-springboot.jar"]
