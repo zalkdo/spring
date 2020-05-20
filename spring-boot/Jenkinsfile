@@ -32,15 +32,20 @@ node {
            }
 
            stage('Push'){
+           	   dir('spring-boot'){
+			   	sh(script: 'docker-compose push app')
+			   }
+           /*
            	   docker.withRegistry("https://registry.hub.docker.com", "dockerhub"){
 				   customImage.push()
 				   customImage.push('latest')           	       
            	   }
+           */
            }
 
            stage('Deploy') {
            		dir('spring-boot'){
-           			sh(script: 'docker-compose up -d production')    
+           			sh(script: 'docker-compose up -d production')
            		}
         		/*try{
         		    sh(script: 'docker stop spring-boot')
