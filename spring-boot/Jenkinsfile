@@ -33,7 +33,7 @@ node {
 
            stage('Push'){
            	   dir('spring-boot'){
-           	   	sh(script: 'docker login')
+           	   	sh(script: 'docker login -u ${DOCKER_USER_ID} -p ${DOCKER_USER_PASSWORD}')
 			   	sh(script: 'docker-compose push app')
 			   }
            /*
