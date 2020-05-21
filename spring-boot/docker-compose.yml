@@ -4,6 +4,8 @@ services:
   app:
     build: .
     image: ${DOCKER_USER_ID}/spring-boot:latest
+  tag:
+    image: ${DOCKER_USER_ID}/spring-boot:${BUILD_NUMBER}
   production:
     image: ${DOCKER_USER_ID}/spring-boot:latest
     volumes:
