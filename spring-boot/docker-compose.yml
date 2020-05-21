@@ -7,7 +7,7 @@ services:
   tag:
     image: ${DOCKER_USER_ID}/spring-boot:latest
   production:
-    image: ${DOCKER_USER_ID}/spring-boot:latest
+    image: ${DOCKER_USER_ID}/spring-boot
     volumes:
       - /tmp
     restart: always
