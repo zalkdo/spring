@@ -45,7 +45,6 @@ node {
            	   }
            */
            }
-
            stage('Deploy') {
            		dir('spring-boot'){
            			sh(script: 'docker-compose up -d production')
