@@ -35,8 +35,8 @@ node {
            stage('Push'){
            	   dir('spring-boot'){
            	   	sh(script: 'docker login -u ${DOCKER_USER_ID} -p ${DOCKER_USER_PASSWORD}')
+			   	sh(script: 'docker push ${DOCKER_USER_ID}/spring-boot:${BUILD_NUMBER}')
 			   	sh(script: 'docker-compose push app')
-			   	sh(script: 'docker push ${DOCKER_USER_ID}/spring-boot:latest')
 			   }
            /*
            	   docker.withRegistry("https://registry.hub.docker.com", "dockerhub"){
