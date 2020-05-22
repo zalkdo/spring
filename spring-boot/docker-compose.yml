@@ -3,12 +3,9 @@ version: '3'
 services:
   app:
     build: .
-    image: ${DOCKER_USER_ID}/spring-boot:${BUILD_NUMBER}
-  tag:
-    build: .
-    image: ${DOCKER_USER_ID}/spring-boot:latest
-  production:
     image: ${DOCKER_USER_ID}/spring-boot
+  production:
+    image: ${DOCKER_USER_ID}/spring-boot:${BUILD_NUMBER}
     volumes:
       - /tmp
     restart: always
