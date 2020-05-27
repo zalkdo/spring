@@ -6,9 +6,11 @@ services:
     image: ${DOCKER_USER_ID}/spring-boot
   production:
     image: ${DOCKER_USER_ID}/spring-boot:${BUILD_NUMBER}
-    volumes:
-      - /tmp
     restart: always
     ports:
-      - 80:8080
+      - 8080:8080
     container_name: spring-boot
+networks:
+  default:
+    external:
+      name: proxy-network
